@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tickart.UI.Admin.home"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,2*,*">
+            <!--  logo  -->
+            <Image
+                Grid.Row="0"
+                Margin="0,40"
+                Aspect="AspectFit"
+                HeightRequest="90"
+                Source="logo.png" />
+
+            <Label
+                Grid.Row="1"
+                Margin="0,60"
+                FontSize="50"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Welcome to Tickart"
+                TextColor="{DynamicResource Tertiary}"
+                VerticalOptions="Center" />
+
+            <Button
+                Grid.Row="2"
+                Margin="20,20"
+                BackgroundColor="{DynamicResource Tertiary}"
+                BorderWidth="2"
+                CornerRadius="30"
+                FontFamily="NexaHeavy"
+                FontSize="20"
+                HeightRequest="60"
+                Text="Generate Report"
+                TextColor="{DynamicResource Secondary}"
+                VerticalOptions="End"
+                WidthRequest="200" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

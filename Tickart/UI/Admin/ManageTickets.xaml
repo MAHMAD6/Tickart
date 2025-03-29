@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tickart.UI.Admin.ManageTickets"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <!--  logo  -->
+        <Image
+            Grid.Row="0"
+            Margin="0,20"
+            Aspect="AspectFit"
+            HeightRequest="70"
+            HorizontalOptions="Center"
+            Source="logo.png" />
+
+
+        <!--  heading  -->
+        <Label
+            Grid.Row="1"
+            Margin="0,20"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Events"
+            TextColor="{DynamicResource Tertiary}"
+            VerticalOptions="Center" />
+
+        <Button
+            Grid.Row="1"
+            Margin="9,0"
+            BackgroundColor="Transparent"
+            BorderWidth="2"
+            Clicked="Item_clicked"
+            CornerRadius="30"
+            FontAttributes="Bold"
+            FontFamily="NexaHeavy"
+            FontSize="20"
+            HeightRequest="50"
+            HorizontalOptions="End"
+            Text="Add"
+            TextColor="{DynamicResource AccentColor}"
+            VerticalOptions="Center"
+            WidthRequest="95" />
+
+        <CollectionView x:Name="collection" Grid.Row="3" />
+
+
+
+
+
+        <Grid
+            Grid.Row="2"
+            Margin="0,15"
+            ColumnDefinitions="auto,auto,auto,*"
+            RowDefinitions="auto,auto,auto,auto">
+            <Image
+                Grid.RowSpan="4"
+                Grid.Column="0"
+                Aspect="AspectFit"
+                HeightRequest="110"
+                Source="ticketicon.png"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                FontAttributes="Bold"
+                FontFamily="NexaHeavy"
+                FontSize="18"
+                Text="Event Name" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                FontFamily="NexaHeavy"
+                FontSize="18"
+                Text="venue:"
+                TextColor="#9B9AA0" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="2"
+                FontFamily="NexaHeavy"
+                FontSize="18"
+                Text="xxxxx"
+                TextColor="#9B9AA0" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                FontFamily="NexaHeavy"
+                FontSize="18"
+                Text="Date:"
+                TextColor="#9B9AA0" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="2"
+                FontFamily="NexaHeavy"
+                FontSize="18"
+                Text="xxxx"
+                TextColor="#9B9AA0" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                FontFamily="NexaHeavy"
+                FontSize="18"
+                Text="Total Seats:"
+                TextColor="#9B9AA0" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="2"
+                FontFamily="NexaHeavy"
+                FontSize="18"
+                Text="xxxx"
+                TextColor="#9B9AA0" />
+
+
+            <Button
+                Grid.RowSpan="2"
+                Grid.Column="3"
+                Margin="9,0"
+                BackgroundColor="{DynamicResource Tertiary}"
+                BorderWidth="2"
+                Clicked="Item_clicked"
+                CornerRadius="30"
+                FontFamily="NexaHeavy"
+                FontSize="20"
+                HeightRequest="50"
+                HorizontalOptions="End"
+                Text="Edit"
+                TextColor="{DynamicResource Secondary}"
+                VerticalOptions="Center"
+                WidthRequest="95" />
+
+
+            <Button
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="3"
+                Margin="9,0"
+                BackgroundColor="{DynamicResource AccentColor}"
+                BorderWidth="2"
+                Clicked="Item_clicked"
+                CornerRadius="30"
+                FontFamily="NexaHeavy"
+                FontSize="20"
+                HeightRequest="50"
+                HorizontalOptions="End"
+                Text="DEL"
+                TextColor="{DynamicResource Secondary}"
+                VerticalOptions="Center"
+                WidthRequest="95" />
+
+        </Grid>
+
+
+
+
+
+
+
+
+
+        <!--  || Fade Effect ||  -->
+        <BoxView
+            x:Name="fadeEffect"
+            Grid.RowSpan="7"
+            BackgroundColor="Black"
+            IsVisible="false"
+            Opacity="0.7">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnFadeEffectTapped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!--  || Pop Up ||  -->
+        <StackLayout
+            x:Name="popup"
+            Grid.RowSpan="7"
+            IsVisible="false"
+            VerticalOptions="End">
+
+            <Frame
+                Padding="10"
+                BackgroundColor="White"
+                CornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!--  || Top Drag Indicator ||  -->
+                    <BoxView
+                        Grid.Row="0"
+                        Margin="0,0,0,15"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HeightRequest="8"
+                        HorizontalOptions="Center"
+                        Opacity="0.3"
+                        WidthRequest="100" />
+
+                    <Grid Grid.Row="1" RowDefinitions="auto,auto,auto,auto,auto,auto">
+
+                        <Label
+                            Grid.Row="0"
+                            Margin="0,4,0,12"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Event"
+                            TextColor="{DynamicResource Tertiary}"
+                            VerticalOptions="Center" />
+
+                        <Frame
+                            Grid.Row="1"
+                            Padding="10"
+                            BorderColor="{DynamicResource Tertiary}"
+                            CornerRadius="12"
+                            HeightRequest="100">
+
+                            <StackLayout>
+                                <Label
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    Text="Name"
+                                    TextColor="#9B9AA0" />
+
+                                <Entry
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    HeightRequest="50"
+                                    Placeholder="........."
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame
+                            Grid.Row="2"
+                            Padding="10"
+                            BorderColor="{DynamicResource Tertiary}"
+                            CornerRadius="12"
+                            HeightRequest="100">
+
+                            <StackLayout>
+                                <Label
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    Text="Venue"
+                                    TextColor="#9B9AA0" />
+
+                                <Entry
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    HeightRequest="50"
+                                    Placeholder="........."
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame
+                            Grid.Row="3"
+                            Padding="10"
+                            BorderColor="{DynamicResource Tertiary}"
+                            CornerRadius="12"
+                            HeightRequest="100">
+
+                            <StackLayout>
+                                <Label
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    Text="Total Seats"
+                                    TextColor="#9B9AA0" />
+
+                                <Entry
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    HeightRequest="50"
+                                    Placeholder="........."
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame
+                            Grid.Row="4"
+                            Padding="10"
+                            BorderColor="{DynamicResource Tertiary}"
+                            CornerRadius="12"
+                            HeightRequest="100">
+
+                            <StackLayout>
+                                <Label
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    Text="Date"
+                                    TextColor="#9B9AA0" />
+                                <DatePicker
+                                    FontFamily="NexaHeavy"
+                                    FontSize="18"
+                                    HeightRequest="50"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+
+                        <Button
+                            Grid.Row="5"
+                            Margin="20,20"
+                            BackgroundColor="{DynamicResource Tertiary}"
+                            BorderWidth="2"
+                            CornerRadius="30"
+                            FontFamily="NexaHeavy"
+                            FontSize="20"
+                            HeightRequest="60"
+                            Text="Confirm"
+                            TextColor="{DynamicResource Secondary}"
+                            VerticalOptions="Start"
+                            WidthRequest="200" />
+                    </Grid>
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+
+
+</ContentPage>

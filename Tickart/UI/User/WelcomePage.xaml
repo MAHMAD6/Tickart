@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tickart.UI.User.WelcomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,*">
+            <!--  logo  -->
+            <Image
+                Grid.Row="0"
+                Margin="0,40"
+                Aspect="AspectFit"
+                HeightRequest="90"
+                Source="logo.png" />
+
+            <Label
+                Grid.Row="1"
+                Margin="0,-100,0,0"
+                FontSize="50"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Welcome to Tickart, Nathan Lyon"
+                TextColor="{DynamicResource Tertiary}"
+                VerticalOptions="Center" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

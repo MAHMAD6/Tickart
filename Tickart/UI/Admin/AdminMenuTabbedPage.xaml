@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="Tickart.UI.Admin.AdminMenuTabbedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:adminViews="clr-namespace:Tickart.UI.Admin">
+    <adminViews:home Title="Home" />
+    <adminViews:ManageUser Title="Users" />
+    <adminViews:ManageTickets Title="Events" />
+</TabbedPage>
